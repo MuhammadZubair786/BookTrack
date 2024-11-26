@@ -91,12 +91,12 @@ const StaffDashboard = () => {
   };
 
   return (
-    <div style={{ margin: "2px", backgroundColor: "#181b3a" }}>
+    <div style={{ margin: "2px", backgroundColor: "#020337" }}>
       <div
         style={{
           marginTop: "100px",
           marginLeft: "20px",
-          backgroundColor: "#181b3a",
+          backgroundColor: "#020337",
           color: "white",
         }}
       ></div>
@@ -106,12 +106,12 @@ const StaffDashboard = () => {
           marginLeft: "15px",
           width: "98%",
           marginRight: "15px",
-          backgroundColor: "transparent",
-          boxShadow: "1px 2px 10px rgba(1, 210, 147, 0.5)",
+          backgroundColor: "#020337",
+          boxShadow: '10px 10px 16px rgba(0, 0, 0, 0.1)',
         }}
       >
         <Toolbar>
-          <Typography variant="h6">Staff Dashboard</Typography>
+          <Typography variant="h6" style={{color:"white",fontSize:25,fontFamily: "Bungee Spice",}}>Staff Dashboard</Typography>
         </Toolbar>
       </AppBar>
 
@@ -120,7 +120,7 @@ const StaffDashboard = () => {
         style={{
           margin: "16px",
           width: "98%",
-          backgroundColor: "#181b3a",
+          backgroundColor: "#020337",
           border: "1px solid white",
         }}
       >

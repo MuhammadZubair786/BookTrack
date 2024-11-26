@@ -1,0 +1,59 @@
+
+/* Shimmer Table Wrapper */
+.shimmer-table {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    background-color: #020337;
+    border-radius: 5px;
+  }
+  
+  /* Table Styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  /* Shimmer Cell */
+  .shimmer-cell {
+    height: 40px; /* Adjust cell height */
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    position: relative;
+    overflow: hidden;
+    animation: shimmer-animation 3.5s infinite linear;
+  }
+  
+  /* Shimmer Animation */
+  @keyframes shimmer-animation {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  
+  /* Custom color support */
+  .shimmer-cell {
+    background: #020337;
+    background: linear-gradient(
+      90deg,
+      #020337 0%,
+      #ffffff  10%,
+      #020337 30%,
+      #ffffff  40%,
+      #020337 100%
+    );
+    animation: shimmer 3.5s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  

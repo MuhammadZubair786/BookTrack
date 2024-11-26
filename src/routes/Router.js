@@ -11,6 +11,7 @@ import DriverWalletManagementDashboard from "../pages/DriverWalletMangemnet";
 import BannerManagement from "../pages/BannerMangement";
 import PromoCodeManagement from "../pages/PromoCodeMangement";
 import NotificationManagement from "../pages/NotificationMangement";
+import CarsDashboard from "../pages/carsList";
 
 const Router = () => {
   return (
@@ -23,6 +24,8 @@ const Router = () => {
       <Route path="/users" element={<UserManagement />} />
       <Route path="/staff" element={<StaffDashboard />} />
       <Route path="/bookings" element={<Bookings />} />
+      <Route path="/cars" element={<CarsDashboard />} />
+
       <Route
         path="/driver-wallet"
         element={<DriverWalletManagementDashboard />}

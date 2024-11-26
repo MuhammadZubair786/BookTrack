@@ -17,15 +17,20 @@ const navLinks = [
     icon: "ri-user-settings-line",
     display: "Users",
   },
-  {
-    path: "/staff",
-    icon: "ri-user-settings-line",
-    display: "Staffs",
-  },
+  // {
+  //   path: "/staff",
+  //   icon: "ri-user-settings-line",
+  //   display: "Staffs",
+  // },
   {
     path: "/bookings",
     icon: "ri-taxi-line",
     display: "Booking",
+  },
+  {
+    path: "/cars",
+    icon: "ri-taxi-line",
+    display: "Cars",
   },
   {
     path: "/driver-wallet",

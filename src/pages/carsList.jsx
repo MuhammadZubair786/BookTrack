@@ -17,9 +17,9 @@ import { Edit, Delete } from "@mui/icons-material";
 import axios from "axios";
 import ShimmerTable from "./loder";
 
-const API_URL = "https://vmcarapp-4a377bf5c0d0.herokuapp.com/api/admin/get-all-rides";
+const API_URL = "https://vmcarapp-4a377bf5c0d0.herokuapp.com/api/admin/get-all-cars";
 
-const BookingDashboard = () => {
+const CarsDashboard = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [totalPages, setTotalPages] = useState(0);
@@ -28,10 +28,10 @@ const BookingDashboard = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetchBookings(page, rowsPerPage);
+    fetchCars(page, rowsPerPage);
   }, [page, rowsPerPage]);
 
-  const fetchBookings = async (currentPage, limit) => {
+  const fetchCars = async (currentPage, limit) => {
     setLoading(true);
     try {
       const response = await axios.get(API_URL, {
@@ -43,9 +43,12 @@ const BookingDashboard = () => {
           "token": `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NDRiZDdlODQwYWU4OGE3N2RhYTUxNCIsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzMyNjUwMDE3LCJleHAiOjE3MzUyNDIwMTd9.YL-JmAiQMWrIpoY_y9olmDoV7DoPHGDkJLytAA9bX9A`, // Use your actual token
         },
       });
-      setUsers(response.data.data); // Adjust based on the API response structure
-      setTotalRides(response.data.pagination.totalRides); // Total number of items
-      setTotalPages(response.data.pagination.totalPages); // Total pages
+
+      console.log(response.data.data)
+      setUsers(response.data.data.carList
+); // Adjust based on the API response structure
+      setTotalRides(response.data.data.pagination.totalCars); // Total number of items
+      setTotalPages(response.data.data.pagination.totalPages); // Total pages
     } catch (error) {
       console.error("Error fetching user data:", error);
     } finally {
@@ -104,31 +107,36 @@ const BookingDashboard = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell style={{ color: "white" }}>Booking ID</TableCell>
+              <TableCell style={{ color: "white" }}>Registration ID</TableCell>
               <TableCell style={{ color: "white" }}>Driver Name</TableCell>
+              <TableCell style={{ color: "white" }}>Driver Email</TableCell>
+
             
-              <TableCell style={{ color: "white" }}>Min Amount</TableCell>
-              <TableCell style={{ color: "white" }}>Max Amount</TableCell>
+              <TableCell style={{ color: "white" }}>Car Type</TableCell>
+              <TableCell style={{ color: "white" }}>Car Model</TableCell>
               <TableCell style={{ color: "white" }}>Total Seats</TableCell>
-              <TableCell style={{ color: "white" }}>Left Seats</TableCell>
 
 
-              <TableCell style={{ color: "white" }}>Date</TableCell>
+              <TableCell style={{ color: "white" }}>Car Year</TableCell>
               <TableCell style={{ color: "white" }}>Status</TableCell>
               <TableCell style={{ color: "white" }}>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {users.map((ride,index) => (
-              <TableRow key={ride._id}>
-                <TableCell style={{ color: "white" }}>{index+1}</TableCell>
-                <TableCell style={{ color: "white" }}>{ride.driverId.fullName}</TableCell>
-                <TableCell style={{ color: "white" }}>{ride.minamount}</TableCell>
-                <TableCell style={{ color: "white" }}>{ride.maxamount}</TableCell>
-                <TableCell style={{ color: "white" }}>{ride.availableSeats}</TableCell>
-                <TableCell style={{ color: "white" }}>{ride.leftSeats}</TableCell>
-                <TableCell style={{ color: "white" }}>{ride.date.toString().substring(0,10)}</TableCell>
-                <TableCell style={{ color: "white" }}>{ride.status}</TableCell>
+            {users.map((car,index) => (
+              <TableRow key={car._id}>
+                <TableCell style={{ color: "white" }}>{car.registrationNumber}</TableCell>
+                <TableCell style={{ color: "white" }}>{car.userId.fullName}</TableCell>
+                <TableCell style={{ color: "white" }}>{car.userId.email}</TableCell>
+                
+
+                <TableCell style={{ color: "white" }}>{car.carType}</TableCell>
+                <TableCell style={{ color: "white" }}>{car.carModel}</TableCell>
+                <TableCell style={{ color: "white" }}>{car.numberOfSeats}</TableCell>
+                <TableCell style={{ color: "white" }}>{car.carYear}</TableCell>
+                
+                <TableCell style={{ color: "white" }}>{car.createdAt.toString().substring(0,10)}</TableCell>
+               
 
                 <TableCell>
                   <IconButton color="primary">
@@ -158,4 +166,4 @@ const BookingDashboard = () => {
   );
 };
 
-export default BookingDashboard;
+export default CarsDashboard;

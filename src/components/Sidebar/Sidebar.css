@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700&display=swap");
+
 .sidebar {
   width: 260px;
   height: 100%;
@@ -5,8 +7,9 @@
   top: 0;
   left: 0;
   z-index: 999;
-  background: #181b3a;
+  background: #020337;
   padding: 0px 30px;
+  border: 1px solid rgb(249, 249, 249);
 }
 
 .sidebar__top {
@@ -39,7 +42,6 @@
 
 .sidebar__content {
   display: flex;
-
   justify-content: space-between;
   flex-direction: column;
   height: calc(100% - 5%);
@@ -81,7 +83,7 @@
 }
 
 .nav__active {
-  color: white;
+  color: #01d293;
   background: #b7ffe913;
   padding: 6px;
   border-radius: 5px;

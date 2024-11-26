@@ -92,7 +92,7 @@ const BannerManagement = () => {
         style={{
           marginTop: "100px",
           marginLeft: "20px",
-          backgroundColor: "#181b3a",
+          backgroundColor: "#ffffff",
           color: "white",
         }}
       ></div>

@@ -3,7 +3,7 @@
   top: 0;
   left: 260px;
   z-index: 999;
-  background: #181b3a;
+  background: #020337;
   width: calc(100% - 260px);
   height: 70px;
   line-height: 70px;
@@ -28,7 +28,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0px 10px;
-  background: #181b3a !important;
+  background: #ffffff !important;
   border-radius: 5px;
   cursor: pointer;
   height: 40px;
