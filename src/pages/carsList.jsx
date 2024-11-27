@@ -17,7 +17,8 @@ import { Edit, Delete } from "@mui/icons-material";
 import axios from "axios";
 import ShimmerTable from "./loder";
 
-const API_URL = "https://vmcarapp-4a377bf5c0d0.herokuapp.com/api/admin/get-all-cars";
+const API_URL =
+  "https://vmcarapp-4a377bf5c0d0.herokuapp.com/api/admin/get-all-cars";
 
 const CarsDashboard = () => {
   const [page, setPage] = useState(0);
@@ -40,13 +41,12 @@ const CarsDashboard = () => {
           limit,
         },
         headers: {
-          "token": `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NDRiZDdlODQwYWU4OGE3N2RhYTUxNCIsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzMyNjUwMDE3LCJleHAiOjE3MzUyNDIwMTd9.YL-JmAiQMWrIpoY_y9olmDoV7DoPHGDkJLytAA9bX9A`, // Use your actual token
+          token: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NDRiZDdlODQwYWU4OGE3N2RhYTUxNCIsImVtYWlsIjoiYWRtaW5AYWRtaW4uY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzMyNjUwMDE3LCJleHAiOjE3MzUyNDIwMTd9.YL-JmAiQMWrIpoY_y9olmDoV7DoPHGDkJLytAA9bX9A`, // Use your actual token
         },
       });
 
-      console.log(response.data.data)
-      setUsers(response.data.data.carList
-); // Adjust based on the API response structure
+      console.log(response.data.data);
+      setUsers(response.data.data.carList); // Adjust based on the API response structure
       setTotalRides(response.data.data.pagination.totalCars); // Total number of items
       setTotalPages(response.data.data.pagination.totalPages); // Total pages
     } catch (error) {
@@ -67,7 +67,7 @@ const CarsDashboard = () => {
 
   return (
     <div style={{ margin: "20px", backgroundColor: "transparent" }}>
-       <div
+      <div
         style={{
           marginTop: "100px",
           marginLeft: "20px",
@@ -86,70 +86,91 @@ const CarsDashboard = () => {
         }}
       >
         <Toolbar>
-        <Typography variant="h6" style={{color:"white",fontSize:25,fontFamily: "Bungee Spice",}}>
+          <Typography
+            variant="h6"
+            style={{ color: "white", fontSize: 25, fontFamily: "Bungee Spice" }}
+          >
             BOOKINGS LIST
           </Typography>
         </Toolbar>
       </AppBar>
-      <TableContainer component={Paper}    style={{
+      <TableContainer
+        component={Paper}
+        style={{
           margin: "16px",
           width: "98%",
           backgroundColor: "#020337",
           border: "1px solid #8b8b93",
           color: "#333333",
           boxShadow: "10px 10px 16px rgba(0, 0, 0, 0.1)",
-        }}>
-           {loading ? (
-        <div style={{ textAlign: "center", padding: "20px" }}>
-     <ShimmerTable row={5} col={5} color="#020337" />;
-      </div>
+        }}
+      >
+        {loading ? (
+          <div style={{ textAlign: "center", padding: "20px", color: "red" }}>
+            <ShimmerTable row={5} col={5} color="red" />;
+          </div>
         ) : (
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell style={{ color: "white" }}>Registration ID</TableCell>
-              <TableCell style={{ color: "white" }}>Driver Name</TableCell>
-              <TableCell style={{ color: "white" }}>Driver Email</TableCell>
-
-            
-              <TableCell style={{ color: "white" }}>Car Type</TableCell>
-              <TableCell style={{ color: "white" }}>Car Model</TableCell>
-              <TableCell style={{ color: "white" }}>Total Seats</TableCell>
-
-
-              <TableCell style={{ color: "white" }}>Car Year</TableCell>
-              <TableCell style={{ color: "white" }}>Status</TableCell>
-              <TableCell style={{ color: "white" }}>Actions</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {users.map((car,index) => (
-              <TableRow key={car._id}>
-                <TableCell style={{ color: "white" }}>{car.registrationNumber}</TableCell>
-                <TableCell style={{ color: "white" }}>{car.userId.fullName}</TableCell>
-                <TableCell style={{ color: "white" }}>{car.userId.email}</TableCell>
-                
-
-                <TableCell style={{ color: "white" }}>{car.carType}</TableCell>
-                <TableCell style={{ color: "white" }}>{car.carModel}</TableCell>
-                <TableCell style={{ color: "white" }}>{car.numberOfSeats}</TableCell>
-                <TableCell style={{ color: "white" }}>{car.carYear}</TableCell>
-                
-                <TableCell style={{ color: "white" }}>{car.createdAt.toString().substring(0,10)}</TableCell>
-               
-
-                <TableCell>
-                  <IconButton color="primary">
-                    <Edit />
-                  </IconButton>
-                  <IconButton color="secondary">
-                    <Delete />
-                  </IconButton>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell style={{ color: "white" }}>
+                  Registration ID
                 </TableCell>
+                <TableCell style={{ color: "white" }}>Driver Name</TableCell>
+                <TableCell style={{ color: "white" }}>Driver Email</TableCell>
+
+                <TableCell style={{ color: "white" }}>Car Type</TableCell>
+                <TableCell style={{ color: "white" }}>Car Model</TableCell>
+                <TableCell style={{ color: "white" }}>Total Seats</TableCell>
+
+                <TableCell style={{ color: "white" }}>Car Year</TableCell>
+                <TableCell style={{ color: "white" }}>Status</TableCell>
+                <TableCell style={{ color: "white" }}>Actions</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>)}
+            </TableHead>
+            <TableBody>
+              {users.map((car, index) => (
+                <TableRow key={car._id}>
+                  <TableCell style={{ color: "white" }}>
+                    {car.registrationNumber}
+                  </TableCell>
+                  <TableCell style={{ color: "white" }}>
+                    {car.userId.fullName}
+                  </TableCell>
+                  <TableCell style={{ color: "white" }}>
+                    {car.userId.email}
+                  </TableCell>
+
+                  <TableCell style={{ color: "white" }}>
+                    {car.carType}
+                  </TableCell>
+                  <TableCell style={{ color: "white" }}>
+                    {car.carModel}
+                  </TableCell>
+                  <TableCell style={{ color: "white" }}>
+                    {car.numberOfSeats}
+                  </TableCell>
+                  <TableCell style={{ color: "white" }}>
+                    {car.carYear}
+                  </TableCell>
+
+                  <TableCell style={{ color: "white" }}>
+                    {car.createdAt.toString().substring(0, 10)}
+                  </TableCell>
+
+                  <TableCell>
+                    <IconButton color="primary">
+                      <Edit />
+                    </IconButton>
+                    <IconButton color="secondary">
+                      <Delete />
+                    </IconButton>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        )}
       </TableContainer>
 
       <TablePagination

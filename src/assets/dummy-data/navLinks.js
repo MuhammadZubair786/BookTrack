@@ -32,21 +32,21 @@ const navLinks = [
     icon: "ri-taxi-line",
     display: "Cars",
   },
-  {
-    path: "/driver-wallet",
-    icon: "ri-wallet-3-line",
-    display: "Driver Wallet Management",
-  },
-  {
-    path: "/banner-management",
-    icon: "ri-image-line",
-    display: "Banner Management",
-  },
-  {
-    path: "/promo-code",
-    icon: "ri-gift-line",
-    display: "Manage Promo Code",
-  },
+  // {
+  //   path: "/driver-wallet",
+  //   icon: "ri-wallet-3-line",
+  //   display: "Driver Wallet Management",
+  // },
+  // {
+  //   path: "/banner-management",
+  //   icon: "ri-image-line",
+  //   display: "Banner Management",
+  // },
+  // {
+  //   path: "/promo-code",
+  //   icon: "ri-gift-line",
+  //   display: "Manage Promo Code",
+  // },
   {
     path: "/notifications",
     icon: "ri-notification-3-line",

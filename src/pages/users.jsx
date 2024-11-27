@@ -25,7 +25,6 @@ import Shimmer from "./loder";
 import ShimmerTable from "./loder";
 import { fetchUsersList } from "../services/ApiServices";
 
-
 const UserDashboard = () => {
   const [users, setUsers] = useState([]); // User data from API
   const [loading, setLoading] = useState(false); // Loading state
@@ -36,13 +35,14 @@ const UserDashboard = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
 
-  const API_URL = "https://vmcarapp-4a377bf5c0d0.herokuapp.com/api/admin/get-all-users";
+  const API_URL =
+    "https://vmcarapp-4a377bf5c0d0.herokuapp.com/api/admin/get-all-users";
 
   // Fetch data from the API
   const fetchUsers = async (currentPage, limit) => {
     setLoading(true);
     try {
-      const response =  await fetchUsersList( currentPage + 1,limit)
+      const response = await fetchUsersList(currentPage + 1, limit);
       setUsers(response.data); // Adjust if API response structure differs
       setTotalUsers(response.pagination.totalUsers); // Adjust according to total count in the API
     } catch (error) {
@@ -73,7 +73,7 @@ const UserDashboard = () => {
 
   return (
     <div style={{ margin: "20px", backgroundColor: "transparent" }}>
-       <div
+      <div
         style={{
           marginTop: "100px",
           marginLeft: "20px",
@@ -92,7 +92,14 @@ const UserDashboard = () => {
         }}
       >
         <Toolbar>
-        <Typography variant="h6" style={{color:"white",fontSize:25,fontFamily: "Bungee Spice",}}>
+          <Typography
+            variant="h6"
+            style={{
+              color: "white !important",
+              fontSize: 25,
+              fontFamily: "Bungee Spice",
+            }}
+          >
             USERS LIST
           </Typography>
         </Toolbar>
@@ -110,30 +117,48 @@ const UserDashboard = () => {
         }}
       >
         {loading ? (
-        <div style={{ textAlign: "center", padding: "20px" }}>
-     <ShimmerTable row={5} col={5} color="#020337" />;
-      </div>
+          <div style={{ textAlign: "center", padding: "20px", color: "red" }}>
+            <ShimmerTable row={5} col={5} color="red" />;
+          </div>
         ) : (
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell style={{ color: "white", fontWeight: "bold" }}>Name</TableCell>
-                <TableCell style={{ color: "white", fontWeight: "bold" }}>Email</TableCell>
-                <TableCell style={{ color: "white", fontWeight: "bold" }}>Status</TableCell>
-                <TableCell style={{ color: "white", fontWeight: "bold" }}>Actions</TableCell>
+                <TableCell style={{ color: "white", fontWeight: "bold" }}>
+                  Name
+                </TableCell>
+                <TableCell style={{ color: "white", fontWeight: "bold" }}>
+                  Email
+                </TableCell>
+                <TableCell style={{ color: "white", fontWeight: "bold" }}>
+                  Status
+                </TableCell>
+                <TableCell style={{ color: "white", fontWeight: "bold" }}>
+                  Actions
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {users.map((user) => (
                 <TableRow key={user.id}>
-                  <TableCell style={{ color: "white" }}>{user.fullName}</TableCell>
+                  <TableCell style={{ color: "white" }}>
+                    {user.fullName}
+                  </TableCell>
                   <TableCell style={{ color: "white" }}>{user.email}</TableCell>
-                  <TableCell style={{ color: "white" }}>{user.online==true? "Online":"Offline"}</TableCell>
+                  <TableCell style={{ color: "white" }}>
+                    {user.online == true ? "Online" : "Offline"}
+                  </TableCell>
                   <TableCell>
-                    <IconButton color="primary" onClick={() => setOpenEditDialog(true)}>
+                    <IconButton
+                      color="primary"
+                      onClick={() => setOpenEditDialog(true)}
+                    >
                       <Edit />
                     </IconButton>
-                    <IconButton color="secondary" onClick={() => setOpenDeleteDialog(true)}>
+                    <IconButton
+                      color="secondary"
+                      onClick={() => setOpenDeleteDialog(true)}
+                    >
                       <Delete />
                     </IconButton>
                   </TableCell>
